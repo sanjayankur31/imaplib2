@@ -477,7 +477,7 @@ class IMAP4(object):
             import ssl
 
             TLS_MAP = {}
-            if hasattr(ssl, "PROTOCOL_TLSv1_2"):
+            if hasattr(ssl, "PROTOCOL_TLS_CLIENT"):
                 TLS_MAP[TLS_SECURE] = {
                     "tls1_2": ssl.PROTOCOL_TLS_CLIENT,
                     "tls1_1": ssl.PROTOCOL_TLS_CLIENT,
