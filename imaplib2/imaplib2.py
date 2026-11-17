@@ -513,6 +513,8 @@ class IMAP4(object):
 
             if getattr(ssl, 'HAS_SNI', False):
                 ctx = ssl.SSLContext(ssl_version)
+                if cert_reqs == ssl.CERT_NONE:
+                    ctx.check_hostname = False
                 ctx.verify_mode = cert_reqs
                 if self.ca_certs is not None:
                     ctx.load_verify_locations(self.ca_certs)
