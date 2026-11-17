@@ -479,14 +479,14 @@ class IMAP4(object):
             TLS_MAP = {}
             if hasattr(ssl, "PROTOCOL_TLSv1_2"):
                 TLS_MAP[TLS_SECURE] = {
-                    "tls1_2": ssl.PROTOCOL_TLSv1_2,
-                    "tls1_1": ssl.PROTOCOL_TLSv1_1,
+                    "tls1_2": ssl.PROTOCOL_TLS_CLIENT,
+                    "tls1_1": ssl.PROTOCOL_TLS_CLIENT,
                 }
             else:
                 TLS_MAP[TLS_SECURE] = {}
             TLS_MAP[TLS_NO_SSL] = TLS_MAP[TLS_SECURE].copy()
             TLS_MAP[TLS_NO_SSL].update({
-                "tls1": ssl.PROTOCOL_TLSv1,
+                "tls1": ssl.PROTOCOL_TLS,
             })
             TLS_MAP[TLS_COMPAT] = TLS_MAP[TLS_NO_SSL].copy()
             TLS_MAP[TLS_COMPAT].update({
