@@ -486,12 +486,12 @@ class IMAP4(object):
                 TLS_MAP[TLS_SECURE] = {}
             TLS_MAP[TLS_NO_SSL] = TLS_MAP[TLS_SECURE].copy()
             TLS_MAP[TLS_NO_SSL].update({
-                "tls1": ssl.PROTOCOL_TLS,
+                "tls1": ssl.PROTOCOL_TLS_CLIENT,
             })
             TLS_MAP[TLS_COMPAT] = TLS_MAP[TLS_NO_SSL].copy()
             TLS_MAP[TLS_COMPAT].update({
-                "ssl23": ssl.PROTOCOL_SSLv23,
-                None: ssl.PROTOCOL_SSLv23,
+                "ssl23": ssl.PROTOCOL_TLS_CLIENT,
+                None: ssl.PROTOCOL_TLS_CLIENT,
             })
             if hasattr(ssl, "PROTOCOL_SSLv3"):          # Might not be available.
                 TLS_MAP[TLS_COMPAT].update({
